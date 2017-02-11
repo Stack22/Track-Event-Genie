@@ -1,0 +1,17 @@
+html  {
+  background-image: url("../images/AV_Web_-34.jpg");
+  background-size: cover;
+}
+.greybox {
+  box-sizing: border-box;
+  display: block;
+  background-color: grey;
+  border: 2px solid black;
+  width: 400px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.resultbox {
+
+}
