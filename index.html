@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <title>Track Event Genie</title>
     <link rel="stylesheet" href="css/main.css">
-
+    <link rel="stylesheet" href="css/responsive.css">
   </head>
   <body>
     <div id="background"></div>
-    <div class="startbox js-startbox greybox">
+    <div class="mainTitle">
+      <span>Track Event Genie</span>
+    </div>
+    <div class="startbox js-startbox greybox col-4">
       <form id="js-form" class="form" action="index.html" method="post">
         <label for="location">Enter Zip Code: <input type="text" class="js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
         </label><br>
@@ -29,7 +32,14 @@
       </form>
     </div>
     <div class="resultsbox js-resultbox lightgreybox">
+      <div class="testCalendar" id="msrCalendar">
 
+      </div>
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
