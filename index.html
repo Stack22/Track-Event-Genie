@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Track Event Genie</title>
-    <!-- <link rel="stylesheet" href="images/"> -->
     <link rel="stylesheet" href="css/main.css">
+
   </head>
   <body>
     <div id="background"></div>
     <div class="startbox js-startbox greybox">
       <form id="js-form" class="form" action="index.html" method="post">
-        <label for="location">Enter Zip Code: <input type="text" class="js-zip-input" name="location" value="" placeholder="5-digit zip code"></input>
+        <label for="location">Enter Zip Code: <input type="text" class="js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
         </label><br>
         <label for="radius">Search Radius: <select type="number" class="js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
           <optgroup label="radius-choices">
@@ -25,6 +25,7 @@
             <option value="1000">1000</option>
           </optgroup>
         </label>
+        <input id="search-button" type="submit" name="submit" value="Search"></input>
       </form>
     </div>
     <div class="resultsbox js-resultbox lightgreybox">
