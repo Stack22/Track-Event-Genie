@@ -46,14 +46,16 @@ font-family: 'Wire One', sans-serif;
   padding-top: 5px;
 }
 
-.resultbox {
+.resultcard {
+  position: relative;
+  width: 98%;
+  height: 100%;
   background-color: white;
   opacity: .7;
   border-radius: 20px;
   box-shadow: 5px 10px 20px black;
   font-family: 'Wire One', sans-serif;
   font-size: 20px;
-  /*padding: 10px;*/
   margin-top: 20px;
 }
 
