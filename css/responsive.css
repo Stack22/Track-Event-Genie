@@ -31,6 +31,10 @@
   width: 100%;
 }
 
+.startbox {
+  min-width: 340px;
+}
+
 .mainTitle {
   padding-top: 5px;
   font-weight: 900;
