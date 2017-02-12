@@ -40,8 +40,19 @@
   width: 50%;
   max-width: 240px;
 }
+
 .resultbox {
   height: auto;
+}
+
+.linksbox {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .mainTitle {
@@ -92,17 +103,22 @@
   }
 
   .linksbox {
-    display: inline-block;
-    width: 98%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .linksbox h3 {
+    display: block;
+    width: 95%;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 97%;
+    height: 40%;
+  }
+
+  h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
     font-size: 30px;
     font-weight: 600;
+
   }
 
   .eventLinks {
