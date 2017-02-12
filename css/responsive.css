@@ -64,6 +64,7 @@ h3 {
 
 .mainTitle img {
   width: 100px;
+  filter: drop-shadow(3px -5px 5px white);
 }
 
 .searchInput {
@@ -90,6 +91,7 @@ h3 {
     position: absolute;
     left: 40%;
     right: auto;
+    filter: drop-shadow(3px -5px 5px white);
   }
 
   .startbox {
