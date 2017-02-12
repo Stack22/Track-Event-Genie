@@ -29,6 +29,14 @@ a {
   color: SlateGrey;
 }
 
+#msrlogo {
+  position: fixed;
+  right: 0;
+  left: auto;
+  bottom: 0;
+  top: auto;
+  filter: drop-shadow(2px -2px 2px white);
+}
 .trackinfobox a {
   color: inherit;
 }
