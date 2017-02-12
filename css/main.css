@@ -87,16 +87,19 @@ ul {
 }
 
 .logobox {
-  /*display: inline-block;*/
-  float: left;
   position: relative;
   top: 10px;
   left: 10px;
-  width: 50%;
+  /*width: 50%;*/
   /*height: 40%;*/
   border-top-left-radius: 20px;
   background-color: white;
   margin: 0px 20px 10px 0px;
+}
+
+.logoimg {
+  position: relative;
+  width: inherit;
 }
 
 .trackinfobox {

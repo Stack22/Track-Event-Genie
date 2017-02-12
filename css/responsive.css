@@ -36,6 +36,10 @@
   min-width: 340px;
 }
 
+.logobox {
+  width: 50%;
+  max-width: 240px;
+}
 .resultbox {
   height: auto;
 }
@@ -78,19 +82,26 @@
     min-width: 360px;
   }
 
+  .logobox {
+    float: left;
+    max-height: 45%;
+  }
+
   .trackinfobox {
     font-size: 20px;
   }
 
   .linksbox {
     display: inline-block;
-    width: auto;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .linksbox h3 {
-    margin-top: 2px;
+    margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
   }
 
@@ -107,13 +118,6 @@
   .resultbox {
     height: 600px;
     min-width: 360px;
-  }
-
-  .linksbox h3 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 30px;
-    font-weight: 600;
   }
 
   .eventLinks {
