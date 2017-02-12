@@ -12,21 +12,21 @@
     <div class="mainTitle">
       <span>Track Event Genie</span>
     </div>
-    <div class="startbox js-startbox hidden">
+    <div class="startbox js-startbox hidde">
       <form id="js-form" class="form" action="index.html" method="post">
         <label for="location">Enter Zip Code: <input type="text" class="input js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
         </label><br>
         <label for="radius">Search Radius: <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
-          <optgroup label="radius-choices">
-            <option value="60 mi">60</option>
-            <option value="120 mi">120</option>
-            <option value="180 mi">180</option>
-            <option value="240 mi">240</option>
-            <option value="300 mi">300</option>
-            <option value="400 mi">400</option>
-            <option value="500 mi">500</option>
-            <option value="750 mi">750</option>
-            <option value="1000 mi">1000</option>
+          <optgroup label="Radius choices">
+            <option value="60">60 mi</option>
+            <option value="120">120 mi</option>
+            <option value="180">180 mi</option>
+            <option value="240">240 mi</option>
+            <option value="300" selected>300 mi</option>
+            <option value="400">400 mi</option>
+            <option value="500">500 mi</option>
+            <option value="750">750 mi</option>
+            <option value="1000">1000 mi</option>
           </optgroup>
         </label>
         <input id="search-button" type="submit" name="submit" value="Search"></input>
@@ -34,17 +34,24 @@
     </div>
     <div class="resultbox col-6 js-resultbox">
       <div class="resultcard js-resultcard">
-        <span>Test text</span>
-      </div>
-    </div>
-    <div class="resultbox col-6 js-resultbox">
-      <div class="resultcard js-resultcard">
-        <span>Test text</span>
-      </div>
-    </div>
-    <div class="resultbox col-6 js-resultbox">
-      <div class="resultcard js-resultcard">
-        <span>Test text</span>
+        <img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo" style="width=50%;height=50%">
+        <!-- <div class="logobox">
+
+        </div> -->
+        <div class="trackinfobox">
+          <span class="trackname">Virginia International Raceway</span><br><br>
+          <span class="trackcity">Alton, VA</span>
+          <span class=""></span>
+        </div>
+        <hr>
+        <div class="linksbox js-links-box">
+          <h3>Upcoming events:</h3>
+          <ul class="eventLinks">
+            <li><a href="#">2017-2-25   THSCC HPDE</a></li>
+            <li><a href="#">2017-3-5    Someone Else Track Day</a></li>
+            <li><a href="#">2017-3-12   NCR SCCA Majors</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <script

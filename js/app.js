@@ -1,3 +1,7 @@
+var state = {
+
+}
+
 // API init/call
 var MSR_API_URL = "https://api.motorsportreg.com/rest/calendars/"
 var avOrgID = '4F1E597B-9955-0AB6-1136213C81AE96EF'
@@ -29,6 +33,19 @@ function getData() {
 		});
 };
 
-$(function() {
-  getData();
+// Event listeners
+function watchForSubmit(state, formElement, zipInputElement, radiusInputElement) {
+  formElement.submit(function(e) {
+    e.preventDefault();
+    console.log("Zip code entered: " + zipInputElement.val() + " ... Radius entered: " + radiusInputElement.val());
+  });
+};
+
+$(function(event) {
+  var zipInputElement = $("js-zip-input");
+  var radiusInputElement = $("js-radius-input");
+  var formElement = $("js-form");
+
+  watchForSubmit(state, formElement, zipInputElement, radiusInputElement)
+  // getData();
 });

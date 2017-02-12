@@ -53,21 +53,8 @@
   height: 30px;
 }
 
-.query-display {
-  z-index: 1;
-  position: fixed;
-  width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 30px;
-}
-video {
-  width: 100%;
-}
-
 /* Non-mobile, grid */
-@media only screen and (min-width: 749px) {
-
+@media only screen and (min-width: 720px) {
   .mainTitle  {
     display: block;
     position: relative;
@@ -85,8 +72,55 @@ video {
   }
 
   .resultbox {
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 360px;
+  }
+
+  .trackinfobox {
+    font-size: 20px;
+  }
+
+  .linksbox {
+    display: inline-block;
+    width: auto;
+  }
+
+  .linksbox h3 {
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .eventLinks {
+    margin-top: 2px;
+    margin-bottom: auto;
+    font-size: 30px;
+    line-height: 1.3;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+
+  .resultbox {
     height: 600px;
     min-width: 360px;
+  }
+
+  .linksbox h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .eventLinks {
+    margin-top: 10px;
+    margin-bottom: auto;
+    font-size: 40px;
+    line-height: 1.3;
   }
   /* 3 columns, 3/12 in % */
   .col-3 {
