@@ -10,7 +10,7 @@ var state = {
       },
     dataType: 'json',
     async: false,
-    postal: "",
+    postalcode: "",
     radius: ""
   }
 }
@@ -27,7 +27,7 @@ function getData(state, callback) {
     dataType: 'json',
     async: false,
     data: {
-      postal: state.apiQuery.postal,
+      postalcode: state.apiQuery.postal,
       radius: state.apiQuery.radius
     },
     success: callback
