@@ -10,12 +10,13 @@ var state = {
     },
     dataType: 'json',
     async: false,
-  },
-  postal: "",
-  radius: ""
+    postal: "",
+    radius: ""
+  }
 }
 
 function getData(state, callback) {
+  console.log(state);
 	$.getJSON(state.apiURL, state.apiQuery, callback);
 };
 
@@ -31,8 +32,8 @@ function watchForSubmit(state, formElement, zipInputElement, radiusInputElement,
     // resetState(state);
     e.preventDefault();
     console.log("I see submit");
-    state.postal = $(this).find(zipInputElement).val();
-    state.radius = $(this).find(radiusInputElement).val();
+    state.apiQuery.postal = $(zipInputElement).val();
+    state.apiQuery.radius = $(radiusInputElement).val();
     getData(state, renderResults);
   });
 };
