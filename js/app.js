@@ -1,51 +1,46 @@
 var state = {
-
+  rawdata: {},
+  cleandata: [],
+  apiURL: "https://api.motorsportreg.com/rest/calendars/.json?postal=27703&radius=300",
+  apiQuery: {
+    type: "GET",
+    url: "https://api.motorsportreg.com/rest/calendars/.json?postal=27703&radius=300",
+    headers: {
+      "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
+    },
+    dataType: 'json',
+    async: false,
+  },
+  postal: "",
+  radius: ""
 }
 
-// API init/call
-var MSR_API_URL = "https://api.motorsportreg.com/rest/calendars/"
-var avOrgID = '4F1E597B-9955-0AB6-1136213C81AE96EF'
-var query = {
-  username: 'trackpedia.com',
-  password: 'traqw1ki',
-  dataType: 'jsonp',
-  cacheBuster: new Date(),
-  postalcode: 27705,
+function getData(state, callback) {
+	$.getJSON(state.apiURL, state.apiQuery, callback);
 };
-// organization/4F1E597B-9955-0AB6-1136213C81AE96EF.jsonp?jsoncallback=?'
 
-function getData() {
-	$.getJSON(MSR_API_URL, query,
-     function(json) {
-			var tbl = '<table>';
-			$.each(json.response.events, function(i, evt) {
-				tbl += '<tr>';
-				tbl += '<td><a href="' + evt.detailuri + '">' + evt.name + '</a></td>';
-				tbl += '<td>' + evt.type + '</td>';
-				tbl += '<td>' + evt.venue.city + ', ' + evt.venue.region + '</td>';
-				tbl += '<td>' + evt.start + '</td>';
-				tbl += '<td>' + evt.end + '</td>';
-				tbl += '<td>' + ((typeof(evt.registration.start) === 'undefined') ? '' : evt.registration.start) + '</td>';
-				tbl += '</tr>';
-			});
-			tbl += '<' + '/table>';
-			$('#msrCalendar').append(tbl);
-		});
+function renderResults(data) {
+  console.log("renderResults function");
+  data.stringify(string, null, 2);
 };
 
 // Event listeners
-function watchForSubmit(state, formElement, zipInputElement, radiusInputElement) {
-  formElement.submit(function(e) {
+function watchForSubmit(state, formElement, zipInputElement, radiusInputElement, submitButton) {
+  submitButton.click(function(e) {
+    // resetState(state);
     e.preventDefault();
-    console.log("Zip code entered: " + zipInputElement.val() + " ... Radius entered: " + radiusInputElement.val());
+    console.log("I see submit");
+    state.postal = $(this).find(zipInputElement).val();
+    state.radius = $(this).find(radiusInputElement).val();
+    getData(state, renderResults);
   });
 };
 
-$(function(event) {
-  var zipInputElement = $("js-zip-input");
-  var radiusInputElement = $("js-radius-input");
-  var formElement = $("js-form");
+var zipInputElement = $(".js-zip-input");
+var radiusInputElement = $(".js-radius-input");
+var formElement = $(".js-form");
+var submitButton = $("#search-button");
 
-  watchForSubmit(state, formElement, zipInputElement, radiusInputElement)
-  // getData();
+$(function() {
+  watchForSubmit(state, formElement, zipInputElement, radiusInputElement, submitButton);
 });
