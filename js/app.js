@@ -1,10 +1,10 @@
 var state = {
   rawdata: {},
   cleandata: [],
-  apiURL: "https://api.motorsportreg.com/rest/calendars/.json?postal=27703&radius=300",
+  apiURL: "https://api.motorsportreg.com/rest/calendars.json",
   apiQuery: {
     type: "GET",
-    url: "https://api.motorsportreg.com/rest/calendars/.json?postal=27703&radius=300",
+    // url: "https://api.motorsportreg.com/rest/calendars/",
     headers: {
       "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
     },
@@ -21,7 +21,8 @@ function getData(state, callback) {
 
 function renderResults(data) {
   console.log("renderResults function");
-  data.stringify(string, null, 2);
+  state.rawdata = data.stringify(string, null, 2);
+  console.log(state.rawdata);
 };
 
 // Event listeners
