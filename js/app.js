@@ -7,7 +7,7 @@ var state = {
     // url: "https://api.motorsportreg.com/rest/calendars/",
     headers: {
       "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
-    },
+      },
     dataType: 'json',
     async: false,
     postal: "",
@@ -18,7 +18,7 @@ var state = {
 function getData(state, callback) {
   console.log(state);
 	// $.getJSON(state.apiURL, state.apiQuery, callback);
-  $.ajax( {
+  var settings = {
     type: "GET",
     url: "https://api.motorsportreg.com/rest/calendars.json",
     headers: {
@@ -26,9 +26,13 @@ function getData(state, callback) {
     },
     dataType: 'json',
     async: false,
-    postal: "",
-    radius: ""
-  });
+    data: {
+      postal: state.apiQuery.postal,
+      radius: state.apiQuery.radius
+    },
+    success: callback
+  };
+  $.ajax(settings);
 };
 
 function renderResults(data) {
