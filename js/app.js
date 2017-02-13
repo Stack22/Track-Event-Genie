@@ -17,7 +17,18 @@ var state = {
 
 function getData(state, callback) {
   console.log(state);
-	$.getJSON(state.apiURL, state.apiQuery, callback);
+	// $.getJSON(state.apiURL, state.apiQuery, callback);
+  $.ajax( {
+    type: "GET",
+    url: "https://api.motorsportreg.com/rest/calendars.json",
+    headers: {
+      "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
+    },
+    dataType: 'json',
+    async: false,
+    postal: "",
+    radius: ""
+  });
 };
 
 function renderResults(data) {
