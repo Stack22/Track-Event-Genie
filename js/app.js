@@ -10,7 +10,7 @@ var state = {
       },
     dataType: 'json',
     async: false,
-    postal: "",
+    postalcode: "",
     radius: ""
   }
 }
@@ -25,9 +25,9 @@ function getData(state, callback) {
       "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
     },
     dataType: 'json',
-    async: false,
+    crossDomain: true,
     data: {
-      postal: state.apiQuery.postal,
+      postalcode: state.apiQuery.postalcode,
       radius: state.apiQuery.radius
     },
     success: callback
