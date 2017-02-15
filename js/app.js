@@ -14,7 +14,7 @@ var state = {
     dataType: 'json',
     async: false,
     data: {postalcode: "", radius: ""},
-    success: renderResults
+    success: saveResults
   },
 }
 
@@ -37,9 +37,10 @@ function cleanData(data) {
   state.cleandata = cleanArray;
 }
 
-function renderResults(data) {
+function saveResults(data) {
   console.log("renderResults function");
-  state.rawdata = data.stringify(string, null, 2);
+  state.rawdata = data;
+  // state.rawdata = data.stringify(string, null, 2);
   console.log(state.rawdata);
 };
 
@@ -59,7 +60,7 @@ function watchForSubmit(state, formElement, zipInputElement, radiusInputElement,
     console.log("I see submit");
     state.apiQuery.data.postalcode = $(zipInputElement).val();
     state.apiQuery.data.radius = $(radiusInputElement).val();
-    getData(state, renderResults);
+    getData(state, saveResults);
   });
 };
 
