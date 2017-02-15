@@ -42,6 +42,8 @@ function saveResults(data) {
   state.rawdata = data;
   // state.rawdata = data.stringify(string, null, 2);
   console.log(state.rawdata);
+  cleanData(data);
+  console.log(state.cleandata);
 };
 
 function renderLinksHtml(state) { // creates array of html 1st 3 events
