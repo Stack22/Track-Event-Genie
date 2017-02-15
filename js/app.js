@@ -43,6 +43,14 @@ function renderResults(data) {
   console.log(state.rawdata);
 };
 
+function renderLinksHtml(state) { // creates array of html 1st 3 events
+  var content = [];
+  for (i=0; i<3; i++) {
+    content.push("<p><a href='" + state.cleandata[i].eventurl + "'>" + state.cleandata[i].eventdate + " / " + state.cleandata[i].eventname + "</a></p>");
+  };
+  console.log(content);
+};
+
 // Event listeners
 function watchForSubmit(state, formElement, zipInputElement, radiusInputElement, submitButton) {
   submitButton.click(function(e) {
