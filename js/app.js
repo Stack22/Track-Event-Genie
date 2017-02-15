@@ -1,38 +1,26 @@
+var jsonFile = "sample_msr.json"
+
 var state = {
-  rawdata: {},
+  rawdata: {
+
+  },
   cleandata: [],
-  apiURL: "https://api.motorsportreg.com/rest/calendars.json",
   apiQuery: {
     type: "GET",
-    // url: "https://api.motorsportreg.com/rest/calendars/",
+    url: "https://api.motorsportreg.com/rest/calendars.json",
     headers: {
       "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
       },
     dataType: 'json',
     async: false,
-    postalcode: "",
-    radius: ""
-  }
+    data: {postalcode: "", radius: ""},
+    success: renderResults
+  },
 }
 
 function getData(state, callback) {
   console.log(state);
-	// $.getJSON(state.apiURL, state.apiQuery, callback);
-  var settings = {
-    type: "GET",
-    url: "https://api.motorsportreg.com/rest/calendars.json",
-    headers: {
-      "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
-    },
-    dataType: 'json',
-    async: false,
-    data: {
-      postalcode: state.apiQuery.postal,
-      radius: state.apiQuery.radius
-    },
-    success: callback
-  };
-  $.ajax(settings);
+  $.ajax(state.apiQuery);
 };
 
 function renderResults(data) {
@@ -47,8 +35,8 @@ function watchForSubmit(state, formElement, zipInputElement, radiusInputElement,
     // resetState(state);
     e.preventDefault();
     console.log("I see submit");
-    state.apiQuery.postal = $(zipInputElement).val();
-    state.apiQuery.radius = $(radiusInputElement).val();
+    state.apiQuery.data.postalcode = $(zipInputElement).val();
+    state.apiQuery.data.radius = $(radiusInputElement).val();
     getData(state, renderResults);
   });
 };
