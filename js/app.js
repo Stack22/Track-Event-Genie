@@ -23,6 +23,20 @@ function getData(state, callback) {
   $.ajax(state.apiQuery);
 };
 
+function cleanData(data) {
+  var cleanArray = data.response.events.map(function(event) {
+    return {
+        orgname: event.organization.name,
+        venue: event.venue,
+        eventdate: event.start,
+        eventtype: event.type,
+        eventname: event.name,
+        eventurl: event.detailuri
+      };
+  });
+  state.cleandata = cleanArray;
+}
+
 function renderResults(data) {
   console.log("renderResults function");
   state.rawdata = data.stringify(string, null, 2);
