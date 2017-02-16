@@ -112,12 +112,12 @@ h3 {
     display: inline;
   }
 
-  .resultbox {
+  /*.resultbox {
     height: 400px;
     margin-left: auto;
     margin-right: auto;
     min-width: 360px;
-  }
+  }*/
 
   .logobox {
     float: left;
@@ -157,10 +157,10 @@ h3 {
 
 @media only screen and (min-width: 1080px) {
 
-  .resultbox {
+  /*.resultbox {
     height: 600px;
     min-width: 360px;
-  }
+  }*/
 
   .eventLinks {
     margin-top: 10px;
