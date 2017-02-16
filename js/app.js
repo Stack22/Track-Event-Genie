@@ -1,7 +1,5 @@
 var state = {
-  rawdata: {
-
-  },
+  rawdata: {},
   cleandata: [],
   apiQuery: {
     type: "GET",
@@ -37,9 +35,10 @@ function cleanData(data) {
 }
 
 function saveResults(data) {
-  state.rawdata = data; // creates state.rawdata
+  // state.rawdata = data; // creates state.rawdata
   cleanData(data); // creates state.cleandata
-  sortByVenue(state); // sorts state.cleandata
+  // sortByVenue(state); // sorts state.cleandata (events w/venues)
+  makeVenuesObject(state); // creates JSON (Venues w/events)
     //deal with cleaning and displaying data
   console.log(state.cleandata);
 };
@@ -57,22 +56,56 @@ function sortByVenue(state) {
   });
 };
 
-// function makeVenuesArray(cleandata) {
-//   console.log("makeVenuesArray");
-//   var arrayObject = []
-//   var currentVenue = cleandata[0].venue.name;
-//   var venueIndex = 0;
-//   for (i=0; i<cleandata.length; i++) {
-//     if (cleandata[i].venue.name === currentVenue) {
-//       arrayObject =
-//       };
-//     } else {
-//       currentVenue = cleandata[i].venue.name;
-//       venueIndex++;
-//     };
-//   };
-//   console.log(arrayObject);
-// };
+/* venuesObject template:
+{
+  venues: [
+    {
+      city :"Cary",
+      name : "Cary Towne Center",
+      postalCode : 27511,
+      region :"NC",
+      uri : "/calendars/venue/42412A66-B022-AC29-0116C0902DA263C2",
+      events: [
+        {
+          eventdate : "2017-10-21",
+          eventname: "THSCC Point Autocross #9"
+        },
+        {
+          eventdate : "2017-10-21",
+          eventname: "THSCC Point Autocross #9"
+        },
+        {
+          eventdate : "2017-10-21",
+          eventname: "THSCC Point Autocross #9"
+        }
+      ]
+    }
+  ]
+}
+*/
+function makeVenuesObject(state) {
+  console.log("makeVenuesArray");
+  var venuesObject = {
+    venues: []
+  };
+  var currentVenue = state.cleandata[0].venue.name;
+  var venueIndex = 0;
+  for (i=0; i<state.cleandata.length; i++) {
+    if (state.cleandata[i].venue.name === currentVenue) {
+      venuesObject.venues.push(state.cleandata.map(function(event) {
+        return {
+          eventdate: event.eventdate,
+          eventname: event.name,
+          eventtype: event.type
+        };
+      }));
+    } else {
+      currentVenue = state.cleandata[i].venue.name;
+      venueIndex++;
+    };
+  };
+  console.log(venuesObject);
+};
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
   var content = [];
