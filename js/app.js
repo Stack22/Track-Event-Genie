@@ -1,5 +1,3 @@
-var jsonFile = "sample_msr.json"
-
 var state = {
   rawdata: {
 
@@ -24,6 +22,7 @@ function getData(state, callback) {
 };
 
 function cleanData(data) {
+  console.log("cleanData");
   var cleanArray = data.response.events.map(function(event) {
     return {
         orgname: event.organization.name,
@@ -38,15 +37,27 @@ function cleanData(data) {
 }
 
 function saveResults(data) {
-  console.log("renderResults function");
   state.rawdata = data;
-  // state.rawdata = data.stringify(string, null, 2);
-  console.log(state.rawdata);
   cleanData(data);
   console.log(state.cleandata);
 };
 
+function sortByVenue(state) {
+  console.log("soryByVenue");
+  return state.cleandata.sort(function(a, b) {
+    var nameA = a.venue.name.toLowerCase();
+    var nameB = b.venue.name.toLowerCase();
+    if (nameA < nameB)
+      return -1;
+    if (nameA > nameB )
+      return 1;
+    return 0;
+  });
+  console.log(state.cleandata);
+};
+
 function renderLinksHtml(state) { // creates array of html 1st 3 events
+
   var content = [];
   for (i=0; i<3; i++) {
     content.push("<p><a href='" + state.cleandata[i].eventurl + "'>" + state.cleandata[i].eventdate + " / " + state.cleandata[i].eventname + "</a></p>");
@@ -63,6 +74,7 @@ function watchForSubmit(state, formElement, zipInputElement, radiusInputElement,
     state.apiQuery.data.postalcode = $(zipInputElement).val();
     state.apiQuery.data.radius = $(radiusInputElement).val();
     getData(state, saveResults);
+    sortByVenue(state);
   });
 };
 
@@ -73,4 +85,5 @@ var submitButton = $("#search-button");
 
 $(function() {
   watchForSubmit(state, formElement, zipInputElement, radiusInputElement, submitButton);
+
 });

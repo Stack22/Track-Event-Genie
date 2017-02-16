@@ -17,7 +17,7 @@
       <form id="js-form" class="form" action="index.html" method="post">
         <label for="location">Enter Zip Code: <input type="text" class="input js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
         </label><br>
-        <label for="radius">Search Radius: <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
+        <label for="radius">Show me events within <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
           <optgroup label="Radius choices">
             <option value="60">60 mi</option>
             <option value="120">120 mi</option>
@@ -28,32 +28,18 @@
             <option value="500">500 mi</option>
             <option value="750">750 mi</option>
             <option value="1000">1000 mi</option>
-          </optgroup>
+          </optgroup></select>
         </label>
-        <input type="submit" id="search-button" name="submit" value="Find Events"></input>
+        <label for="searchtype">Show me events by  <select type="text" class="input js-search-type" name="type" value="" placeholder="Search Type">
+
+            <option value="venue">Venue</option>
+            <option value="date" selected>Date</option>
+            <option value="prox">Proximity</option>
+          </select>
+        </label>
       </form>
     </div>
-    <div class="resultbox col-6 js-resultbox">
-      <div class="resultcard js-resultcard">
-        <img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">
-
-        <div class="trackinfobox">
-          <span class="trackname">Virginia International Raceway</span><br><br>
-          <span class="trackcity">Alton, VA</span><br><br>
-          <span class="maplink"><a href="#">View on Map</a></span>
-        </div>
-        <hr>
-        <div class="linksbox js-links-box">
-          <h3>Upcoming events:</h3>
-          <ul class="eventLinks">
-            <li><a href="#">2017-2-25   THSCC HPDE</a></li>
-            <li><a href="#">2017-3-5    Someone Else Track Day</a></li>
-            <li><a href="#">2017-3-12   NCR SCCA Majors</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="resultbox col-6 js-resultbox">
+    <div class="resultbox col-6 js-resultbox hidden">
       <div class="resultcard js-resultcard">
         <img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">
 

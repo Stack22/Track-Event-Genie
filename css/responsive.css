@@ -33,8 +33,13 @@
 }
 
 .startbox {
-  width: 90%;
-  min-width: 340px;
+  min-width: 360px;
+  height: auto;
+  font-size: 25px;
+}
+
+label {
+  display: block;
 }
 
 .logobox {
@@ -75,7 +80,7 @@ h3 {
 }
 
 /* Non-mobile, grid */
-@media only screen and (min-width: 720px) {
+@media only screen and (min-width: 760px) {
   .mainTitle  {
     display: block;
     position: relative;
@@ -98,6 +103,13 @@ h3 {
   .startbox {
     margin-left: auto;
     margin-right: auto;
+    height: auto;
+    min-width: 672px;
+    font-size: 40px;
+  }
+
+  label {
+    display: inline;
   }
 
   .resultbox {
