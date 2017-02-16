@@ -37,14 +37,16 @@ function cleanData(data) {
 }
 
 function saveResults(data) {
-  state.rawdata = data;
-  cleanData(data);
+  state.rawdata = data; // creates state.rawdata
+  cleanData(data); // creates state.cleandata
+  sortByVenue(state); // sorts state.cleandata
+    //deal with cleaning and displaying data
   console.log(state.cleandata);
 };
 
-function sortByVenue(state, resultsElement) {
+function sortByVenue(state) {
   console.log("soryByVenue");
-  return state.cleandata.sort(function(a, b) {
+  state.cleandata.sort(function(a, b) {
     var nameA = a.venue.name.toLowerCase();
     var nameB = b.venue.name.toLowerCase();
     if (nameA < nameB)
@@ -53,19 +55,35 @@ function sortByVenue(state, resultsElement) {
       return 1;
     return 0;
   });
-  console.log(state.cleandata);
-  renderResultsBox(state, resultsElement);
 };
+
+// function makeVenuesArray(cleandata) {
+//   console.log("makeVenuesArray");
+//   var arrayObject = []
+//   var currentVenue = cleandata[0].venue.name;
+//   var venueIndex = 0;
+//   for (i=0; i<cleandata.length; i++) {
+//     if (cleandata[i].venue.name === currentVenue) {
+//       arrayObject =
+//       };
+//     } else {
+//       currentVenue = cleandata[i].venue.name;
+//       venueIndex++;
+//     };
+//   };
+//   console.log(arrayObject);
+// };
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
   var content = [];
   for (i=0; i<3; i++) {
-    content.push("<p><a href='" + array.cleandata[i].eventurl + "'>" + array.cleandata[i].eventdate + " / " + array.cleandata[i].eventname + "</a></p>");
+    content.push("<p><a href='" + array[i].eventurl + "'>" + array[i].eventdate + " / " + array[i].eventname + "</a></p>");
   };
   console.log(content);
 };
 
 function renderResultsBox(state, resultsElement) {
+  console.log("renderResultsBox");
   var content = state.cleandata.map(function(event) {
     return '<div class="resultcard col-6 js-resultcard">' +
     '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + event.venue.name + '</span><br><br>' +
@@ -85,7 +103,7 @@ function renderResultsBox(state, resultsElement) {
 };
 
 // Event listeners
-function watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, searchTypeElement, resultsElement) {
+function watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement) {
   submitButton.click(function(e) {
     // resetState(state);
     e.preventDefault();
@@ -93,13 +111,6 @@ function watchForSubmit(formElement, zipInputElement, radiusInputElement, submit
     state.apiQuery.data.postalcode = $(zipInputElement).val();
     state.apiQuery.data.radius = $(radiusInputElement).val();
     getData(state, saveResults);
-    if (searchTypeElement.val() === "venue") {
-      sortByVenue(state, resultsElement);
-    } else if (searchTypeElement.val() === "proximity") {
-      //sortByProximity(state);
-    } else {
-      //do nothing
-    };
   });
 };
 
@@ -107,10 +118,9 @@ var zipInputElement = $(".js-zip-input");
 var radiusInputElement = $(".js-radius-input");
 var formElement = $(".js-form");
 var submitButton = $("#search-button");
-var searchTypeElement = $(".js-search-type");
 var resultsElement = $("#js-resultbox")
 
 $(function() {
-  watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, searchTypeElement, resultsElement);
+  watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement);
 
 });
