@@ -66,7 +66,7 @@ function renderLinksHtml(state) { // creates array of html 1st 3 events
 };
 
 // Event listeners
-function watchForSubmit(state, formElement, zipInputElement, radiusInputElement, submitButton) {
+function watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, searchTypeElement) {
   submitButton.click(function(e) {
     // resetState(state);
     e.preventDefault();
@@ -74,7 +74,13 @@ function watchForSubmit(state, formElement, zipInputElement, radiusInputElement,
     state.apiQuery.data.postalcode = $(zipInputElement).val();
     state.apiQuery.data.radius = $(radiusInputElement).val();
     getData(state, saveResults);
-    sortByVenue(state);
+    if (searchTypeElement.val() === "venue") {
+      sortByVenue(state);
+    } else if (searchTypeElement.val() === "proximity") {
+      //sortByProximity(state);
+    } else {
+      //do nothing
+    };
   });
 };
 
@@ -82,8 +88,9 @@ var zipInputElement = $(".js-zip-input");
 var radiusInputElement = $(".js-radius-input");
 var formElement = $(".js-form");
 var submitButton = $("#search-button");
+var searchTypeElement = $(".js-search-type");
 
 $(function() {
-  watchForSubmit(state, formElement, zipInputElement, radiusInputElement, submitButton);
+  watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, searchTypeElement);
 
 });
