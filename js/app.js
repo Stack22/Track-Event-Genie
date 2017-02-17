@@ -83,28 +83,47 @@ function sortByVenue(state) {
   ]
 }
 */
+
 function makeVenuesObject(state) {
-  console.log("makeVenuesArray");
   var venuesObject = {
-    venues: []
+    venues: [
+      {
+        name: "",
+        city: "",
+        region: "",
+        postalCode: "",
+        events: [
+          {
+            edate: null,
+            ename: "",
+            eurl: "",
+          }
+        ]
+      }
+    ]
   };
-  var currentVenue = state.cleandata[0].venue.name;
   var venueIndex = 0;
-  for (i=0; i<state.cleandata.length; i++) {
-    if (state.cleandata[i].venue.name === currentVenue) {
-      venuesObject.venues.push(state.cleandata.map(function(event) {
-        return {
-          eventdate: event.eventdate,
-          eventname: event.name,
-          eventtype: event.type
-        };
-      }));
-    } else {
-      currentVenue = state.cleandata[i].venue.name;
-      venueIndex++;
-    };
-  };
-  console.log(venuesObject);
+  var currentVenue = state.cleandata[0].venue.name;
+  console.log(currentVenue);
+  venuesObject = state.cleandata.map(function(item) {
+    if (item.venue.name !== currentVenue) {
+        // add venue name to venuesObject?
+        // update currentVenue
+        currentVenue = item.venue.name;
+        // update venueIndex
+        venueIndex++;
+      } else {
+        // push event info into venuesObject.venues[venueIndex].events
+        venuesObject.venues[venueIndex].events.push(
+          {
+            eventdate: item.eventdate,
+            eventname: item.eventname,
+            eventtype: item.eventtype,
+            eventurl: item.eventurl,
+            orgname: item.orgname
+          });
+      };
+  });
 };
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
@@ -155,5 +174,4 @@ var resultsElement = $("#js-resultbox")
 
 $(function() {
   watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement);
-
 });
