@@ -21,7 +21,7 @@ function getData(state, callback) {
 
 function cleanData(data) {
   console.log("cleanData");
-  var cleanArray = data.response.events.map(function(event) {
+  var cleanObject = data.response.events.map(function(event) {
     return {
         orgname: event.organization.name,
         venuename: event.venue.name,
@@ -35,7 +35,7 @@ function cleanData(data) {
         eventurl: event.detailuri
       };
   });
-  state.cleandata = cleanArray;
+  state.cleandata = cleanObject;
 }
 
 function saveResults(data) {
@@ -47,7 +47,6 @@ function saveResults(data) {
 };
 
 function sortByVenue(state) {
-  console.log("soryByVenue");
   state.cleandata.sort(function(a, b) {
     var nameA = a.venuename.toLowerCase();
     var nameB = b.venuename.toLowerCase();
@@ -88,9 +87,14 @@ function sortByVenue(state) {
 */
 
 function makeVenuesObject(state) {
-  console.log(state);
   sortByVenue(state);
-  console.log(state);
+  var output = state.cleandata
+    .reduce((venues, item) => {
+      // venues[item[0]] = [];
+      console.log('hello', item);
+      return venues
+    });
+  console.log(output);
 };
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
