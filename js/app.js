@@ -89,7 +89,7 @@ function sortByVenue(state) {
 function makeVenuesObject(state) {
   sortByVenue(state);
   var output = state.cleandata
-    .reduce((venues, item) => {
+    .reduce(function(venues, item) {
       venues[item.venuename] = venues[item.venuename] || [];
       venues[item.venuename].push({
         eventdate: item.eventdate,
@@ -101,7 +101,7 @@ function makeVenuesObject(state) {
         venuestate: item.venuestate,
         venuezip: item.venuezip,
         venueloc: item.venueloc
-      })
+      });
       return venues
     });
   console.log('output', JSON.stringify(output, null, 2));
