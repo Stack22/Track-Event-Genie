@@ -90,10 +90,21 @@ function makeVenuesObject(state) {
   sortByVenue(state);
   var output = state.cleandata
     .reduce((venues, item) => {
-      venues[item.venuename] = [];
+      venues[item.venuename] = venues[item.venuename] || [];
+      venues[item.venuename].push({
+        eventdate: item.eventdate,
+        eventname: item.eventname,
+        eventdate: item.eventdate,
+        eventurl: item.eventurl,
+        orgname: item.orgname,
+        venuecity: item.venuecity,
+        venuestate: item.venuestate,
+        venuezip: item.venuezip,
+        venueloc: item.venueloc
+      })
       return venues
     });
-  console.log(output);
+  console.log('output', JSON.stringify(output, null, 2));
 };
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
