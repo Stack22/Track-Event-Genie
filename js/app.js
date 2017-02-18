@@ -21,7 +21,7 @@ function getData(state, callback) {
 
 function cleanData(data) {
   console.log("cleanData");
-  var cleanObject = data.response.events.map(function(event) {
+  var cleanArray = data.response.events.map(function(event) {
     return {
         orgname: event.organization.name,
         venuename: event.venue.name,
@@ -35,14 +35,15 @@ function cleanData(data) {
         eventurl: event.detailuri
       };
   });
-  state.cleandata = cleanObject;
+  state.cleandata = cleanArray;
+  return cleanArray;
 }
 
 function saveResults(data) {
   // state.rawdata = data; // creates state.rawdata
-  cleanData(data); // creates state.cleandata
+  // cleanData(data); // creates state.cleandata
   // sortByVenue(state); // sorts state.cleandata (events w/venues)
-  makeVenuesObject(state); // creates JSON (Venues w/events)
+  makeVenuesObject(cleanData(data)); // creates JSON (Venues w/events)
     //deal with cleaning and displaying data
 };
 
@@ -86,10 +87,9 @@ function sortByVenue(state) {
 }
 */
 
-function makeVenuesObject(state) {
-  sortByVenue(state);
-  var output = state.cleandata
-    .reduce(function(venues, item) {
+function makeVenuesObject(cleanArray) {
+  // sortByVenue(state);
+  var output = cleanArray.reduce(function(venues, item) {
       venues[item.venuename] = venues[item.venuename] || [];
       venues[item.venuename].push({
         eventdate: item.eventdate,
