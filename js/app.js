@@ -24,7 +24,11 @@ function cleanData(data) {
   var cleanArray = data.response.events.map(function(event) {
     return {
         orgname: event.organization.name,
-        venue: event.venue,
+        venuename: event.venue.name,
+        venuecity: event.venue.city,
+        venuestate: event.venue.region,
+        venuezip: event.venue.postalCode,
+        venueloc: event.venue.geo,
         eventdate: event.start,
         eventtype: event.type,
         eventname: event.name,
@@ -40,14 +44,13 @@ function saveResults(data) {
   // sortByVenue(state); // sorts state.cleandata (events w/venues)
   makeVenuesObject(state); // creates JSON (Venues w/events)
     //deal with cleaning and displaying data
-  console.log(state.cleandata);
 };
 
 function sortByVenue(state) {
   console.log("soryByVenue");
   state.cleandata.sort(function(a, b) {
-    var nameA = a.venue.name.toLowerCase();
-    var nameB = b.venue.name.toLowerCase();
+    var nameA = a.venuename.toLowerCase();
+    var nameB = b.venuename.toLowerCase();
     if (nameA < nameB)
       return -1;
     if (nameA > nameB )
@@ -85,45 +88,9 @@ function sortByVenue(state) {
 */
 
 function makeVenuesObject(state) {
-  var venuesObject = {
-    venues: [
-      {
-        name: "",
-        city: "",
-        region: "",
-        postalCode: "",
-        events: [
-          {
-            edate: null,
-            ename: "",
-            eurl: "",
-          }
-        ]
-      }
-    ]
-  };
-  var venueIndex = 0;
-  var currentVenue = state.cleandata[0].venue.name;
-  console.log(currentVenue);
-  venuesObject = state.cleandata.map(function(item) {
-    if (item.venue.name !== currentVenue) {
-        // add venue name to venuesObject?
-        // update currentVenue
-        currentVenue = item.venue.name;
-        // update venueIndex
-        venueIndex++;
-      } else {
-        // push event info into venuesObject.venues[venueIndex].events
-        venuesObject.venues[venueIndex].events.push(
-          {
-            eventdate: item.eventdate,
-            eventname: item.eventname,
-            eventtype: item.eventtype,
-            eventurl: item.eventurl,
-            orgname: item.orgname
-          });
-      };
-  });
+  console.log(state);
+  sortByVenue(state);
+  console.log(state);
 };
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
