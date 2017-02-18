@@ -90,8 +90,7 @@ function makeVenuesObject(state) {
   sortByVenue(state);
   var output = state.cleandata
     .reduce((venues, item) => {
-      // venues[item[0]] = [];
-      console.log('hello', item);
+      venues[item.venuename] = [];
       return venues
     });
   console.log(output);
