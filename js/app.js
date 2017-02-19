@@ -121,12 +121,17 @@ function compileData(useTrackArray, state) {
   return htmlObject;
 }; // return data for html use
 
-function renderLinksHtml(array) { // creates array of html 1st 3 events
+function renderLinksHtml(venueObject) { // creates array of html 1st 3 events
+  console.log(venueObject);
   var content = [];
-  for (i=0; i<3 && i<array.length; i++) {
-    content.push("<p><a href='" + array[i].eventurl + "'>" + array[i].eventdate + " / " + array[i].eventname + "</a></p>");
+  var html = "";
+  for (i=0; i<3 && i<venueObject.length; i++) {
+    content.push("<li><a href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + " / " + venueObject[i].eventname + "</a></li>");
   };
-  console.log(content);
+  for (j=0; j<content.length; j++) {
+    html += content[j];
+  }
+  return html;
 };
 
 function renderResultsBox(state) {
@@ -140,7 +145,6 @@ function renderResultsBox(state) {
       return true;
     };
   }).sort();
-  // console.log('Tracks: ', useTrackArray.sort());
   var htmlArray = compileData(useTrackArray, state);
   console.log(htmlArray);
   var content = htmlArray.map(function(venue) {
@@ -151,10 +155,10 @@ function renderResultsBox(state) {
       '</div><hr>' +
       '<div class="linksbox js-links-box">' +
       '<h3>Upcoming events:</h3>' +
-      '<ul class="eventLinks">' +
-      '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
-      '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
-      '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
+      '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
+      // '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
+      // '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
+      // '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
       '</ul></div></div>'
   });
   console.log(content);
