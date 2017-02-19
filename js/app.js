@@ -104,35 +104,47 @@ function makeVenuesObject(cleanArray) {
       });
       return venues
     });
-  console.log('output', JSON.stringify(output, null, 2));
+  // console.log('output', JSON.stringify(output, null, 2));
+  renderResultsBox(state);
 };
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
   var content = [];
-  for (i=0; i<3; i++) {
+  for (i=0; i<3 && i<array.length; i++) {
     content.push("<p><a href='" + array[i].eventurl + "'>" + array[i].eventdate + " / " + array[i].eventname + "</a></p>");
   };
   console.log(content);
 };
 
-function renderResultsBox(state, resultsElement) {
+function renderResultsBox(state) {
   console.log("renderResultsBox");
-  var content = state.cleandata.map(function(event) {
-    return '<div class="resultcard col-6 js-resultcard">' +
-    '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + event.venue.name + '</span><br><br>' +
-      '<span class="trackcity">' + event.venue.city + ', ' + event.venue.region + '</span><br><br>' +
-      '<span class="maplink"><a href="#">View on Map</a></span>' +
-      '</div><hr>' +
-      '<div class="linksbox js-links-box">' +
-      '<h3>Upcoming events:</h3>' +
-      '<ul class="eventLinks">' +
-      '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
-      '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
-      '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
-      '</ul></div></div>'
+  var trackArray = Object.getOwnPropertyNames(state.cleandata[0]);
+  var useTrackArray = trackArray.filter(function(track) {
+    var doNotWant = ["orgname","venuename","venuestate","venuezip","venueloc","eventdate","eventtype","eventname","eventurl","venuecity"];
+    if (doNotWant.includes(track)) {
+      return false;
+    } else {
+      return true;
+    };
   });
-  resultsElement.removeClass(".hidden");
-  resultsElement.html(content);
+  console.log('Tracks: ', useTrackArray.sort());
+  // var content = state.cleandata[0].map(function(event) {
+  //   return Object.getOwnPropertyNames(event)
+    // '<div class="resultcard col-6 js-resultcard">' +
+    // '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + event.venue.name + '</span><br><br>' +
+    //   '<span class="trackcity">' + event.venue.city + ', ' + event.venue.region + '</span><br><br>' +
+    //   '<span class="maplink"><a href="#">View on Map</a></span>' +
+    //   '</div><hr>' +
+    //   '<div class="linksbox js-links-box">' +
+    //   '<h3>Upcoming events:</h3>' +
+    //   '<ul class="eventLinks">' +
+    //   '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
+    //   '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
+    //   '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
+    //   '</ul></div></div>'
+  // });
+  // resultsElement.removeClass(".hidden");
+  // resultsElement.html(content);
 };
 
 // Event listeners
