@@ -108,6 +108,16 @@ function makeVenuesObject(cleanArray) {
   renderResultsBox(state);
 };
 
+function compileData(useTrackArray, state) {
+  var contentObject = state.cleandata[0];
+  console.log(contentObject);
+  console.log(useTrackArray);
+
+  for (i=0; i<useTrackArray.length; i++) {
+    console.log('Track: ' + useTrackArray[i] + ' # of events: ' + contentObject[useTrackArray[i]].length);
+  };
+}; // return data for html use
+
 function renderLinksHtml(array) { // creates array of html 1st 3 events
   var content = [];
   for (i=0; i<3 && i<array.length; i++) {
@@ -126,10 +136,10 @@ function renderResultsBox(state) {
     } else {
       return true;
     };
-  });
-  console.log('Tracks: ', useTrackArray.sort());
+  }).sort();
+  // console.log('Tracks: ', useTrackArray.sort());
+  var htmlArray = compileData(useTrackArray, state);
   // var content = state.cleandata[0].map(function(event) {
-  //   return Object.getOwnPropertyNames(event)
     // '<div class="resultcard col-6 js-resultcard">' +
     // '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + event.venue.name + '</span><br><br>' +
     //   '<span class="trackcity">' + event.venue.city + ', ' + event.venue.region + '</span><br><br>' +
@@ -143,8 +153,6 @@ function renderResultsBox(state) {
     //   '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
     //   '</ul></div></div>'
   // });
-  // resultsElement.removeClass(".hidden");
-  // resultsElement.html(content);
 };
 
 // Event listeners
