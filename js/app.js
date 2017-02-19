@@ -112,10 +112,14 @@ function compileData(useTrackArray, state) {
   var contentObject = state.cleandata[0];
   console.log(contentObject);
   console.log(useTrackArray);
-
-  for (i=0; i<useTrackArray.length; i++) {
-    console.log('Track: ' + useTrackArray[i] + ' # of events: ' + contentObject[useTrackArray[i]].length);
-  };
+  var htmlObject = useTrackArray.map(function(track) {
+    return {
+      name: track,
+      events: contentObject[track]
+      };
+    });
+  // console.log('Track: ' + useTrackArray[i] + ' # of events: ' + contentObject[useTrackArray[i]].length);
+  return htmlObject;
 }; // return data for html use
 
 function renderLinksHtml(array) { // creates array of html 1st 3 events
@@ -139,6 +143,7 @@ function renderResultsBox(state) {
   }).sort();
   // console.log('Tracks: ', useTrackArray.sort());
   var htmlArray = compileData(useTrackArray, state);
+  console.log(htmlArray);
   // var content = state.cleandata[0].map(function(event) {
     // '<div class="resultcard col-6 js-resultcard">' +
     // '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + event.venue.name + '</span><br><br>' +
