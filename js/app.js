@@ -126,7 +126,7 @@ function renderLinksHtml(venueObject) { // creates array of html 1st 3 events
   var content = [];
   var html = "";
   for (i=0; i<3 && i<venueObject.length; i++) {
-    content.push("<li><a href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + " / " + venueObject[i].eventname + "</a></li>");
+    content.push("<li><a target='_blank' href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + " / " + venueObject[i].eventname + "</a></li>");
   };
   for (j=0; j<content.length; j++) {
     html += content[j];
@@ -151,14 +151,11 @@ function renderResultsBox(state) {
     return '<div class="resultcard col-6 js-resultcard">' +
     '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
       '<span class="trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span><br><br>' +
-      '<span class="maplink"><a href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
+      '<span class="maplink"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
       '</div><hr>' +
       '<div class="linksbox js-links-box">' +
       '<h3>Upcoming events:</h3>' +
       '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
-      // '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
-      // '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
-      // '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
       '</ul></div></div>'
   });
   console.log(content);
