@@ -118,7 +118,6 @@ function compileData(useTrackArray, state) {
       events: contentObject[track]
       };
     });
-  // console.log('Track: ' + useTrackArray[i] + ' # of events: ' + contentObject[useTrackArray[i]].length);
   return htmlObject;
 }; // return data for html use
 
@@ -144,20 +143,23 @@ function renderResultsBox(state) {
   // console.log('Tracks: ', useTrackArray.sort());
   var htmlArray = compileData(useTrackArray, state);
   console.log(htmlArray);
-  // var content = state.cleandata[0].map(function(event) {
-    // '<div class="resultcard col-6 js-resultcard">' +
-    // '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + event.venue.name + '</span><br><br>' +
-    //   '<span class="trackcity">' + event.venue.city + ', ' + event.venue.region + '</span><br><br>' +
-    //   '<span class="maplink"><a href="#">View on Map</a></span>' +
-    //   '</div><hr>' +
-    //   '<div class="linksbox js-links-box">' +
-    //   '<h3>Upcoming events:</h3>' +
-    //   '<ul class="eventLinks">' +
-    //   '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
-    //   '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
-    //   '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
-    //   '</ul></div></div>'
-  // });
+  var content = htmlArray.map(function(venue) {
+    return '<div class="resultcard col-6 js-resultcard">' +
+    '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
+      '<span class="trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span><br><br>' +
+      '<span class="maplink"><a href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
+      '</div><hr>' +
+      '<div class="linksbox js-links-box">' +
+      '<h3>Upcoming events:</h3>' +
+      '<ul class="eventLinks">' +
+      '<li><a href="#">2017-2-25   THSCC HPDE</a></li>' +
+      '<li><a href="#">2017-3-5    Someone Else Track Day</a></li>' +
+      '<li><a href="#">2017-3-12   NCR SCCA Majors</a></li>' +
+      '</ul></div></div>'
+  });
+  console.log(content);
+  $("#js-resultbox").append(content);
+  $("#js-resultbox").removeClass("hidden");
 };
 
 // Event listeners
