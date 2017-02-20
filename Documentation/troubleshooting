@@ -1,0 +1,7 @@
+This project requires an api call from a third party web application. After reaching out to the owner/programmer, I received the login information for basic authorization (needed for the type of data I wanted to pull). After a few tries, I was able to pull data from my command line using curl, but was receiving a 401 error message when trying to use my web app.
+
+After making some JavaScript changes, I was able to make a little progress. My error message upgraded from a 401 (Unauthorized) to a 404 (Resource not found). After searching the web, best I was able to determine, I was running into a crossorigin resource sharing issue. After trying various workarounds that I found (or so I thought), I was getting nowhere on my own.
+
+I enlisted the help of another Thinkful mentor, Jefferson Heard. He agreed to meet me and take a look at what I've got. After only a few minutes, and some magic keystrokes from the command line, he was relatively certain that the problem lay not in my code, but on the server where I was calling. The OPTIONS call was throwing the 404 message. It wasn't returning the correct CORS headers.
+
+We emailed the programmer, telling him our theory. A few hours later, I get a response asking to see the full header request information, which surprisingly I was able to get to him quickly. A short while later, another email response letting me know that he would be updating the server code with permissions to return the correct CORS headers! 

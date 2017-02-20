@@ -11,13 +11,13 @@
     <div id="background"></div>
     <div class="mainTitle">
       <img src="images/genie-clipart.png" alt="genie bottle">
-      <span>Track Event Genie</span>
+      <span id="pagelogo">Track Event Genie</span>
     </div>
-    <div class="startbox js-startbox hidde">
+    <div class="startbox js-startbox">
       <form id="js-form" class="form" action="index.html" method="post">
-        <label for="location">Enter Zip Code: <input type="text" class="input js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
-        </label><br>
-        <label for="radius">Search Radius: <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
+        <label id="zip-input" for="location">Enter Zip Code: <input  type="text" class="input js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
+        </label>
+        <label for="radius">Show me events within <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
           <optgroup label="Radius choices">
             <option value="60">60 mi</option>
             <option value="120">120 mi</option>
@@ -28,32 +28,14 @@
             <option value="500">500 mi</option>
             <option value="750">750 mi</option>
             <option value="1000">1000 mi</option>
-          </optgroup>
+          </optgroup></select>
         </label>
-        <input type="submit" id="search-button" name="submit" value="Find Events"></input>
+          <label for="submit"><input type="submit" name="Go" value=" GO! " class="go-button" id="search-button"></input></label>
       </form>
     </div>
-    <div class="resultbox col-6 js-resultbox">
-      <div class="resultcard js-resultcard">
-        <img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">
-
-        <div class="trackinfobox">
-          <span class="trackname">Virginia International Raceway</span><br><br>
-          <span class="trackcity">Alton, VA</span><br><br>
-          <span class="maplink"><a href="#">View on Map</a></span>
-        </div>
-        <hr>
-        <div class="linksbox js-links-box">
-          <h3>Upcoming events:</h3>
-          <ul class="eventLinks">
-            <li><a href="#">2017-2-25   THSCC HPDE</a></li>
-            <li><a href="#">2017-3-5    Someone Else Track Day</a></li>
-            <li><a href="#">2017-3-12   NCR SCCA Majors</a></li>
-          </ul>
-        </div>
-      </div>
+    <div id="js-resultbox" class="resultbox hidden">
     </div>
-    <a href="http://www.MotorsportReg.com/" id="msrlogo"><img src="http://msr-hotlink.s3.amazonaws.com/msr_red_on_transparent_190x30.png" height="30" width="190" alt="Online registration and event management service for motorsport events powered by MotorsportReg.com" title="Online registration and event management service for motorsport events powered by MotorsportReg.com" /></a>
+    <a href="https://www.MotorsportReg.com/" id="msrlogo"><img src="https://msr-hotlink.s3.amazonaws.com/msr_red_on_transparent_190x30.png" height="30" width="190" alt="Online registration and event management service for motorsport events powered by MotorsportReg.com" title="Online registration and event management service for motorsport events powered by MotorsportReg.com" /></a>
     <script
   src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
