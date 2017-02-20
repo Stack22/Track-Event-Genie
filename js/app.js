@@ -16,7 +16,7 @@ var state = {
 
 function getData(state, callback) {
   console.log(state);
-<<<<<<< HEAD
+
 	// $.getJSON(state.apiURL, state.apiQuery, callback);
   var settings = {
     type: "GET",
@@ -31,7 +31,7 @@ function getData(state, callback) {
       radius: state.apiQuery.radius
     },
     success: callback
-=======
+
   $.ajax(state.apiQuery);
 };
 
@@ -142,7 +142,7 @@ function renderLinksHtml(venueObject) { // creates array of html 1st 3 events
   var html = "";
   for (i=0; i<3 && i<venueObject.length; i++) {
     content.push("<li><a target='_blank' href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + " / " + venueObject[i].eventname + "</a></li>");
->>>>>>> 826620d41abc387587197341173b9c077a0fd2cf
+
   };
   for (j=0; j<content.length; j++) {
     html += content[j];
