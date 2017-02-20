@@ -8,7 +8,7 @@ var state = {
       "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
       },
     dataType: 'json',
-    async: false,
+    async: true,
     data: {postalcode: "", radius: ""},
     success: saveResults
   },
@@ -104,7 +104,6 @@ function makeVenuesObject(cleanArray) {
       });
       return venues
     });
-  // console.log('output', JSON.stringify(output, null, 2));
   renderResultsBox(state);
 };
 
@@ -119,7 +118,7 @@ function compileData(useTrackArray, state) {
       };
     });
   return htmlObject;
-}; // return data for html use
+};
 
 function renderLinksHtml(venueObject) { // creates array of html 1st 3 events
   console.log(venueObject);
