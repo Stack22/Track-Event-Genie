@@ -16,10 +16,12 @@
     left: 40%;
     right: auto;
     filter: drop-shadow(3px -5px 5px white);
+    margin-bottom: 25px;
   }
 
   .startbox {
     font-size: 40px;
+    margin-top: 125px;
   }
 
   label {
