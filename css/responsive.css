@@ -27,10 +27,6 @@
     display: inline;
   }
 
-  .resultbox {
-    max-width: 700px;
-  }
-
   .logobox {
     float: left;
     max-height: 45%;

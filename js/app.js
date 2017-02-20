@@ -16,22 +16,6 @@ var state = {
 
 function getData(state, callback) {
   console.log(state);
-
-	// $.getJSON(state.apiURL, state.apiQuery, callback);
-  var settings = {
-    type: "GET",
-    url: "https://api.motorsportreg.com/rest/calendars.json",
-    headers: {
-      "Authorization": "Basic " + btoa('trackpedia.com' + ":" + 'traqw1ki')
-    },
-    dataType: 'json',
-    crossDomain: true,
-    data: {
-      postalcode: state.apiQuery.postalcode,
-      radius: state.apiQuery.radius
-    },
-    success: callback
-
   $.ajax(state.apiQuery);
 };
 
@@ -142,7 +126,6 @@ function renderLinksHtml(venueObject) { // creates array of html 1st 3 events
   var html = "";
   for (i=0; i<3 && i<venueObject.length; i++) {
     content.push("<li><a target='_blank' href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + " / " + venueObject[i].eventname + "</a></li>");
-
   };
   for (j=0; j<content.length; j++) {
     html += content[j];
