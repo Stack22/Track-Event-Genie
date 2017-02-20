@@ -1,11 +1,31 @@
-/*
-font-family: 'Josefin Sans', sans-serif;
-font-family: 'Shadows Into Light', cursive;
-font-family: 'Syncopate', sans-serif;
-font-family: 'Wire One', sans-serif;
-*/
+/* defaults */
 * {
   box-sizing: border-box;
+}
+
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+/* Clearfix */
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+.row::after {
+  clear: both;
+}
+
+.col-3, .col-4, .col-6, .col-12 {
+  float: left;
+  padding-left: 1.04166666%;
+  padding-right: 1.04166666%;
+  margin-bottom: 20px;
 }
 
 #background:before  {
@@ -58,7 +78,8 @@ ul {
 }
 
 .startbox {
-  width: 50%;
+  width: 90%;
+  max-width: 652px;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
