@@ -15,12 +15,10 @@ var state = {
 }
 
 function getData(state, callback) {
-  console.log(state);
   $.ajax(state.apiQuery);
 };
 
 function cleanData(data) {
-  console.log("cleanData");
   var cleanArray = data.response.events.map(function(event) {
     return {
         orgname: event.organization.name,
@@ -40,11 +38,7 @@ function cleanData(data) {
 }
 
 function saveResults(data) {
-  // state.rawdata = data; // creates state.rawdata
-  // cleanData(data); // creates state.cleandata
-  // sortByVenue(state); // sorts state.cleandata (events w/venues)
-  makeVenuesObject(cleanData(data)); // creates JSON (Venues w/events)
-    //deal with cleaning and displaying data
+  makeVenuesObject(cleanData(data));
 };
 
 function sortByVenue(state) {
@@ -59,36 +53,7 @@ function sortByVenue(state) {
   });
 };
 
-/* venuesObject template:
-{
-  venues: [
-    {
-      city :"Cary",
-      name : "Cary Towne Center",
-      postalCode : 27511,
-      region :"NC",
-      uri : "/calendars/venue/42412A66-B022-AC29-0116C0902DA263C2",
-      events: [
-        {
-          eventdate : "2017-10-21",
-          eventname: "THSCC Point Autocross #9"
-        },
-        {
-          eventdate : "2017-10-21",
-          eventname: "THSCC Point Autocross #9"
-        },
-        {
-          eventdate : "2017-10-21",
-          eventname: "THSCC Point Autocross #9"
-        }
-      ]
-    }
-  ]
-}
-*/
-
 function makeVenuesObject(cleanArray) {
-  // sortByVenue(state);
   var output = cleanArray.reduce(function(venues, item) {
       venues[item.venuename] = venues[item.venuename] || [];
       venues[item.venuename].push({
@@ -120,7 +85,7 @@ function compileData(useTrackArray, state) {
   return htmlObject;
 };
 
-function renderLinksHtml(venueObject) { // creates array of html 1st 3 events
+function renderLinksHtml(venueObject) {
   console.log(venueObject);
   var content = [];
   var html = "";
@@ -165,9 +130,7 @@ function renderResultsBox(state) {
 // Event listeners
 function watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement) {
   submitButton.click(function(e) {
-    // resetState(state);
     e.preventDefault();
-    console.log("I see submit");
     state.apiQuery.data.postalcode = $(zipInputElement).val();
     state.apiQuery.data.radius = $(radiusInputElement).val();
     getData(state, saveResults);
