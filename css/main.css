@@ -28,6 +28,52 @@
   margin-bottom: 20px;
 }
 
+/* Mobile defaults */
+.col-3, .col-4, .col-6, .col-12 {
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+.logobox {
+  width: 50%;
+  max-width: 240px;
+}
+
+.resultbox {
+  height: auto;
+}
+
+.linksbox {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.mainTitle {
+  padding-top: 5px;
+  font-weight: 900;
+  font-size: 40px;
+  text-align: center;
+}
+
+.mainTitle img {
+  width: 100px;
+  filter: drop-shadow(3px -5px 5px white);
+}
+
+.searchInput {
+  margin-left: 5%;
+  width: 200px;
+  height: 30px;
+}
+
 #background:before  {
   content: "";
   position: fixed;
@@ -84,18 +130,18 @@ ul {
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
-  height: 100px;
+  height: auto;
   opacity: .7;
   border-radius: 20px;
   box-shadow: 5px 10px 20px black;
   text-align: center;
   font-family: 'Wire One', sans-serif;
-  font-size: 40px;
+  font-size: 25px;
   padding: 10px;
 }
 
-.input, #search-button {
-  display: inline;
+.input {
+  display: inline-block;
   height: 30px;
   padding-left: 5px;
   border-radius: 5px;
@@ -104,6 +150,22 @@ ul {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
   margin-left: 5px;
+}
+
+.go-button {
+  display: inline-block;
+  height: 30px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  vertical-align: middle;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+#zip-input {
+  display: block;
 }
 
 .resultcard {
