@@ -1,32 +1,8 @@
 
 /* Non-mobile, grid */
-@media only screen and (min-width: 760px) {
-  .mainTitle  {
-    display: block;
-    position: relative;
-    padding-top: 20px;
-    font-size: 60px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+@media only screen and (min-width: 784px) {
 
-  .mainTitle img {
-    width: 200px;
-    position: absolute;
-    left: 40%;
-    right: auto;
-    filter: drop-shadow(3px -5px 5px white);
-    margin-bottom: 25px;
-  }
 
-  .startbox {
-    font-size: 40px;
-    margin-top: 125px;
-  }
-
-  label {
-    display: inline;
-  }
 
   .logobox {
     float: left;
