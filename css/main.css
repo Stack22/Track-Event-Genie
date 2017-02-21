@@ -22,7 +22,7 @@
 
 /* Mobile defaults */
 .col-3, .col-4, .col-6, .col-12 {
-  float: left;
+  /*float: left;*/
   width: 100%;
   padding-left: 1.04166666%;
   padding-right: 1.04166666%;
@@ -32,24 +32,6 @@
 label {
   display: block;
 }
-
-/*.logobox {
-  width: 50%;
-  max-width: 240px;
-}
-
-.resultbox {
-  height: auto;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 652px;
-}
-
-.linksbox {
-  width: 90%;
-  margin-bottom: 20px;
-}*/
 
 h3 {
   margin-top: 0px;
@@ -148,12 +130,9 @@ a:hover {
 
 }
 
-/*.trackinfobox a {
-  color: inherit;
-}*/
-
-ul {
+li {
   list-style-type: none;
+  font-size: 22px;
 }
 
 .hidden {
@@ -207,23 +186,18 @@ ul {
 
 .result-container {
   box-sizing: border-box;
-  width: 400px;
-  height: 400px;
+  height: auto;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  max-width: 652px;
   background-color: grey;
   padding: 15px;
-  border-radius: 15px
-}
-
-/*.resultcard {
-  position: relative;
-  background-color: SlateGrey;
-  opacity: 1.0;
-  border-radius: 20px;
-  box-shadow: 5px 10px 20px black;
+  border-radius: 15px;
   font-family: 'Wire One', sans-serif;
   font-size: 20px;
-  margin-top: 20px;
-}*/
+}
 
 .subcontainer {
   box-sizing: border-box;
@@ -238,21 +212,21 @@ ul {
   display: inline-block;
   overflow: hidden;
   width: 50%;
-  height: 50%;
+  height: 160px;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
   box-shadow: 2px 2px 20px black;
 }
 
 .img-container img {
-  position: relative;
+  position: static;;
   margin: auto;
-  min-height: 100%;
-  min-width: 100%;
-  left: -100%;
+  width: 100%;
+  min-width: 200px;
+  /*left: -100%;
   right: -100%;
   top: -100%;
-  bottom: -100%;
+  bottom: -100%;*/
 }
 
 .info-container {
@@ -265,6 +239,18 @@ ul {
   padding-left: 20px
 }
 
+.track-name {
+  display: block;
+  margin-bottom: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+}
+
+.city-state {
+  display: block;
+  margin-bottom: 20px;
+}
+
 .links-container {
   padding-left: 20px;
   box-sizing: border-box;
@@ -272,38 +258,7 @@ ul {
   height: 50%;
 }
 
-/*.logobox {
-  position: relative;
-  top: 10px;
-  left: 10px;
-  border-top-left-radius: 20px;
-  background-color: white;
-  margin: 0px 20px 10px 0px;
-}
-
-.logoimg {
-  position: relative;
-  width: inherit;
-}
-
-.trackinfobox {
-  color: white;
-  padding: 10px;
-  display: inline-block;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.linksbox {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background-color: Linen;
-  padding: 10px;
-}*/
-
-@media only screen and (min-width: 510px) {
+@media only screen and (min-width: 540px) {
   .footer-info {
     display: block;
     position: fixed;
@@ -315,7 +270,22 @@ ul {
     left: 0;
     right: auto;
   }
-}
+
+  .img-container {
+    height: 40%;
+  }
+
+  .track-name {
+    font-size: 30px;
+  }
+
+  h3 {
+    margin-top: 15px;
+  }
+
+  li {
+    font-size: 32px;
+  }
 
 @media only screen and (min-width: 784px) {
 
@@ -350,25 +320,7 @@ ul {
     font-weight: 600;
   }
 
-  /*.trackinfobox {
-    font-size: 20px;
+  .track-name {
+    font-size: 40px;
   }
-
-  .linksbox {
-    display: block;
-    width: 95%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 97%;
-    height: 40%;
-  }
-
-  .eventLinks {
-    margin-top: 2px;
-    margin-bottom: auto;
-    font-size: 30px;
-    line-height: 1.3;
-  }*/
 }
