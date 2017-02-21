@@ -107,15 +107,28 @@ function renderResultsBox(state) {
   }).sort();
   var htmlArray = compileData(useTrackArray, state);
   var content = htmlArray.map(function(venue) {
-    return '<div class="resultcard col-6 js-resultcard">' +
-    '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
-      '<span class="trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span><br><br>' +
-      '<span class="maplink"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
-      '</div>' +
-      '<div class="linksbox js-links-box">' +
-      '<h3>Upcoming events:</h3>' +
-      '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
-      '</ul></div></div>'
+    // var resultshtml =
+    // '<div class="resultcard col-6 js-resultcard">' +
+    // '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
+    //   '<span class="trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span><br><br>' +
+    //   '<span class="maplink"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
+    //   '</div>' +
+    //   '<div class="linksbox js-links-box">' +
+    //   '<h3>Upcoming events:</h3>' +
+    //   '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
+    //   '</ul></div></div>'
+      var resultshtml =
+      '<div class="resultcard col-6 js-resultcard">' +
+      '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
+        '<span class="trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span><br><br>' +
+        '<span class="maplink"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
+        '</div>' +
+        '<div class="linksbox js-links-box">' +
+        '<h3>Upcoming events:</h3>' +
+        '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
+        '</ul></div></div>'
+
+      return resultshtml;
   });
   $("#js-resultbox").append(content);
   $("#js-resultbox").removeClass("hidden");
