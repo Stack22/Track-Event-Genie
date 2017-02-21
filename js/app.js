@@ -74,8 +74,6 @@ function makeVenuesObject(cleanArray) {
 
 function compileData(useTrackArray, state) {
   var contentObject = state.cleandata[0];
-  console.log(contentObject);
-  console.log(useTrackArray);
   var htmlObject = useTrackArray.map(function(track) {
     return {
       name: track,
@@ -86,7 +84,6 @@ function compileData(useTrackArray, state) {
 };
 
 function renderLinksHtml(venueObject) {
-  console.log(venueObject);
   var content = [];
   var html = "";
   for (i=0; i<3 && i<venueObject.length; i++) {
@@ -99,7 +96,6 @@ function renderLinksHtml(venueObject) {
 };
 
 function renderResultsBox(state) {
-  console.log("renderResultsBox");
   var trackArray = Object.getOwnPropertyNames(state.cleandata[0]);
   var useTrackArray = trackArray.filter(function(track) {
     var doNotWant = ["orgname","venuename","venuestate","venuezip","venueloc","eventdate","eventtype","eventname","eventurl","venuecity"];
@@ -110,7 +106,6 @@ function renderResultsBox(state) {
     };
   }).sort();
   var htmlArray = compileData(useTrackArray, state);
-  console.log(htmlArray);
   var content = htmlArray.map(function(venue) {
     return '<div class="resultcard col-6 js-resultcard">' +
     '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
@@ -122,7 +117,6 @@ function renderResultsBox(state) {
       '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
       '</ul></div></div>'
   });
-  console.log(content);
   $("#js-resultbox").append(content);
   $("#js-resultbox").removeClass("hidden");
 };
