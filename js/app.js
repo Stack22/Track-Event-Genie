@@ -118,15 +118,23 @@ function renderResultsBox(state) {
     //   '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
     //   '</ul></div></div>'
       var resultshtml =
-      '<div class="resultcard col-6 js-resultcard">' +
-      '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' + '<div class="trackinfobox"><span class="trackname">' + venue.name + '</span><br><br>' +
-        '<span class="trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span><br><br>' +
-        '<span class="maplink"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
+      '<div class="result-container col-6 js-resultcard">' +
+        '<div class="subcontainer">' +
+          '<div class="img-container">' +
+            '<img class="logobox" src="images/AV_Web_-32.jpg" alt="track-logo">' +
+          '</div>' +
+          '<div class="info-container trackinfobox">' +
+            '<span class="track-name trackname">' + venue.name + '</span>' +
+            '<span class="city-state trackcity">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span>' +
+            '<span class="map-link maplink"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
+          '</div>' +
+          '<div class="links-container linksbox js-links-box">' +
+          '<h3>Upcoming events:</h3>' +
+          '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
+            '</ul>' +
+          '</div>' +
         '</div>' +
-        '<div class="linksbox js-links-box">' +
-        '<h3>Upcoming events:</h3>' +
-        '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
-        '</ul></div></div>'
+      '</div>'
 
       return resultshtml;
   });
