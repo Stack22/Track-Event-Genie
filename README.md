@@ -32,3 +32,6 @@ This is v1.0 of the app, future feature additions and enhancements are planned t
   - allow for other postal codes to be used (e.g. Canada)
   - have results sorted optionally by location (e.g. near to far)
   - Option to show a complete list of scheduled events (if more than three)
+* Detail view of each venue
+* Semi-randomized results images based on venue
+* Pop-up "quick view" on hover over event link 
