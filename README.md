@@ -22,10 +22,11 @@ https://stack22.github.io/track_event_finder/
 * Each card includes up to three upcoming events at that venue (opens a new tab with the event's registration info page when clicked)
 
 #Technical
-This app uses a jQuery AJAX call to retrieve event data based on user defined location and search radius parameters, then uses jQuery to hold the results in memory and render them via HTML. It is written to be responsive across multiple steps of window sizes, and mobile devices.
+This app uses a jQuery AJAX call to retrieve event data based on user defined location and search radius parameters, then uses jQuery to hold the results in memory and render them via HTML. It is written to be responsive across multiple steps of window sizes.
 
 #Development Roadmap
 This is v1.0 of the app, future feature additions and enhancements are planned to include:
+* Optimize for mobile 
 * More user-defined search or display parameters
   - event type options
   - allow city/state to be entered instead of zip code
@@ -34,4 +35,4 @@ This is v1.0 of the app, future feature additions and enhancements are planned t
   - Option to show a complete list of scheduled events (if more than three)
 * Detail view of each venue
 * Semi-randomized results images based on venue
-* Pop-up "quick view" on hover over event link 
+* Pop-up "quick view" on hover over event link
