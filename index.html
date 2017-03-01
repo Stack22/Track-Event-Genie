@@ -7,23 +7,24 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Shadows+Into+Light|Syncopate|Wire+One" rel="stylesheet">
   </head>
-  <body>
-    <div id="background"></div>
+  <body id="background">
     <div class="mainTitle">
       <img src="images/genie-clipart.png" alt="genie bottle">
-      <span id="pagelogo">Track Event Genie</span>
+      <h1 id="pagelogo">Track Event Genie</h1>
     </div>
     <div class="startbox js-startbox">
       <form id="js-form" class="form" action="index.html" method="post">
-        <label id="zip-input" for="location">Enter Zip Code: <input  type="text" class="input js-zip-input" name="location" value="" placeholder="5-digit zip code" required></input>
+        <label id="zip-input" for="form">Enter Zip Code: <input type="text" class="input js-zip-input" name="location" placeholder="5-digit zip code" required></input>
         </label>
         <label for="radius">Show me events within <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
           <optgroup label="Radius choices">
+            <option value="10">10 mi</option>
+            <option value="30">30 mi</option>
             <option value="60">60 mi</option>
-            <option value="120">120 mi</option>
+            <option value="120" selected>120 mi</option>
             <option value="180">180 mi</option>
             <option value="240">240 mi</option>
-            <option value="300" selected>300 mi</option>
+            <option value="300">300 mi</option>
             <option value="400">400 mi</option>
             <option value="500">500 mi</option>
             <option value="750">750 mi</option>
