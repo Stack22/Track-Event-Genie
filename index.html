@@ -14,9 +14,9 @@
     </div>
     <div class="startbox js-startbox">
       <form id="js-form" class="form" action="index.html" method="post">
-        <label id="zip-input" for="form">Enter Zip Code: <input type="text" class="input js-zip-input" name="location" placeholder="5-digit zip code" required></input>
-        </label>
-        <label for="radius">Show me events within <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
+        <span class="form-spans"><label id="zip-input" for="form">Enter Zip Code: <input type="text" class="input js-zip-input" name="location" placeholder="5-digit zip code" required></input>
+        </label></span>
+        <span class="form-spans"><label for="radius">Show me events within <select type="number" class="input js-radius-input" name="radius" value="" placeholder="Choose from dropdown">
           <optgroup label="Radius choices">
             <option value="10">10 mi</option>
             <option value="30">30 mi</option>
@@ -30,8 +30,9 @@
             <option value="750">750 mi</option>
             <option value="1000">1000 mi</option>
           </optgroup></select>
-        </label>
-          <label for="submit"><input type="submit" name="Go" value=" GO! " class="go-button" id="search-button"></input></label>
+        </label></span>
+          <!-- <label for="submit"><input type="submit" name="Go" value=" GO! " class="go-button" id="search-button"></input></label> -->
+        <span class="form-spans"><input type="submit" name="Go" value=" GO! " class="go-button" id="search-button"></input></span>
       </form>
     </div>
     <div id="js-resultbox" class="resultbox hidden">
