@@ -18,6 +18,28 @@ function getData(state, callback) {
   $.ajax(state.apiQuery);
 };
 
+function convertDate(date) {
+    const months = {
+    '01':'Jan',
+    '02':'Feb',
+    '03':'Mar',
+    '04':'Apr',
+    '05':'May',
+    '06':'Jun',
+    '07':'Jul',
+    '08':'Aug',
+    '09':'Sep',
+    '10':'Oct',
+    '11':'Nov',
+    '12':'Dec'
+  };
+  let m = date.slice(5,7);
+  let d = date.slice(8,10);
+  let y = date.slice(0,4);
+  let newDate = `${months[m]} ${d}, ${y}`;
+  return newDate;
+};
+
 function cleanData(data) {
   var cleanArray = data.response.events.map(function(event) {
     return {
@@ -27,7 +49,7 @@ function cleanData(data) {
         venuestate: event.venue.region,
         venuezip: event.venue.postalCode,
         venueloc: event.venue.geo,
-        eventdate: event.start,
+        eventdate: convertDate(event.start),
         eventtype: event.type,
         eventname: event.name,
         eventurl: event.detailuri
@@ -39,18 +61,6 @@ function cleanData(data) {
 
 function saveResults(data) {
   makeVenuesObject(cleanData(data));
-};
-
-function sortByVenue(state) {
-  state.cleandata.sort(function(a, b) {
-    var nameA = a.venuename.toLowerCase();
-    var nameB = b.venuename.toLowerCase();
-    if (nameA < nameB)
-      return -1;
-    if (nameA > nameB )
-      return 1;
-    return 0;
-  });
 };
 
 function makeVenuesObject(cleanArray) {
@@ -87,7 +97,7 @@ function renderLinksHtml(venueObject) {
   var content = [];
   var html = "";
   for (i=0; i<3 && i<venueObject.length; i++) {
-    content.push("<li><a target='_blank' href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + " / " + venueObject[i].eventname + "</a></li>");
+    content.push("<li><a target='_blank' href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + "  " + venueObject[i].eventname + "</a></li>");
   };
   for (j=0; j<content.length; j++) {
     html += content[j];
