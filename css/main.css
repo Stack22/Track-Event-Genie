@@ -31,6 +31,7 @@
 
 label {
   display: block;
+  margin-top: 4px;
 }
 
 h3 {
@@ -187,10 +188,17 @@ li {
   margin-bottom: 5px;
 }
 
-.go-button {
+.button:hover {
+  background-color: slategrey;
+  color: white;
+  /*border: 5px;*/
+}
+
+.button {
   display: inline-block;
   height: 30px;
-  padding-left: 5px;
+  padding-left: 8px;
+  padding-right: 9px;
   padding-top: 6px;
   border-radius: 5px;
   border: 1px solid grey;
@@ -303,6 +311,10 @@ li {
   }
 
 @media only screen and (min-width: 784px) {
+
+  .landing {
+    margin-top: 100px;
+  }
 
   .mainTitle  {
     position: relative;
