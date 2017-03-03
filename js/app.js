@@ -143,6 +143,15 @@ function renderResultsBox(state) {
 };
 
 // Event listeners
+function watchForStart(landingElement, startButton, startBox) {
+  startButton.click(function(e) {
+    console.log("I clicked start!");
+    e.preventDefault();
+    landingElement.addClass("hidden");
+    startBox.removeClass("hidden");
+  });
+};
+
 function watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement) {
   submitButton.click(function(e) {
     e.preventDefault();
@@ -152,12 +161,16 @@ function watchForSubmit(formElement, zipInputElement, radiusInputElement, submit
   });
 };
 
-var zipInputElement = $(".js-zip-input");
-var radiusInputElement = $(".js-radius-input");
-var formElement = $(".js-form");
-var submitButton = $("#search-button");
-var resultsElement = $("#js-resultbox")
+const zipInputElement = $(".js-zip-input");
+const radiusInputElement = $(".js-radius-input");
+const formElement = $(".js-form");
+const submitButton = $("#search-button");
+const resultsElement = $("#js-resultbox");
+const landingElement = $("#js-landing");
+const startButton = $("#js-get-started");
+const startBox = $("#js-startbox");
 
 $(function() {
+  watchForStart(landingElement, startButton, startBox);
   watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement);
 });

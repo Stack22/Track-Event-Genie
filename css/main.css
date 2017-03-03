@@ -339,7 +339,7 @@ li {
   }
 
   label {
-    display: inline;
+    margin-top: 4px;
   }
 
   h3 {
