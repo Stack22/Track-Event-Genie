@@ -101,6 +101,17 @@ function compileData(useTrackArray, state) {
   return htmlObject;
 };
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+function getImage() {
+  let imgNumber = getRandomIntInclusive(1, 23);
+  return `images/img${imgNumber}.jpg`;
+}
+
 function renderLinksHtml(venueObject) {
   var content = [];
   var html = "";
@@ -116,6 +127,7 @@ function renderLinksHtml(venueObject) {
 function renderResultsBox(state) {
   var trackArray = Object.getOwnPropertyNames(state.cleandata[0]);
   var useTrackArray = trackArray.filter(function(track) {
+    // workaround for extra data in state object
     var doNotWant = ["orgname","venuename","venuestate","venuezip","venueloc","eventdate","eventtype","eventname","eventurl","venuecity"];
     if (doNotWant.includes(track)) {
       return false;
@@ -129,7 +141,7 @@ function renderResultsBox(state) {
       `<div class="result-container col-6 js-resultcard">
         <div class="subcontainer">
           <div class="img-container">
-            <img src="images/autox_5.jpg" alt="track-logo">
+            <img src="${getImage()}" alt="track-logo">
             </div>
           <div class="info-container">
             <span class="track-name">${venue.name}</span>
