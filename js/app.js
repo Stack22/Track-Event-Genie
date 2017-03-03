@@ -14,6 +14,14 @@ var state = {
   },
 }
 
+function validateZip(zipInputElement) {
+  if (zipInputElement.val().length === 5) {
+    return true;
+  } else {
+    alert('Zip Code must be 5 digits');
+  };
+};
+
 function getData(state, callback) {
   $.ajax(state.apiQuery);
 };
@@ -118,23 +126,6 @@ function renderResultsBox(state) {
   var htmlArray = compileData(useTrackArray, state);
   var content = htmlArray.map(function(venue) {
       var resultshtml =
-      // '<div class="result-container col-6 js-resultcard">' +
-      //   '<div class="subcontainer">' +
-      //     '<div class="img-container">' +
-      //       '<img src="images/autox_5.jpg" alt="track-logo">' +
-      //     '</div>' +
-      //     '<div class="info-container">' +
-      //       '<span class="track-name">' + venue.name + '</span>' +
-      //       '<span class="city-state">' + venue.events[0].venuecity + ', ' + venue.events[0].venuestate + '</span>' +
-      //       '<span class="map-link"><a target="_blank" href="http://maps.google.com/maps?q=' + venue.events[0].venueloc.coordinates[1]+','+ venue.events[0].venueloc.coordinates[0] + '">View on Map</a></span>' +
-      //     '</div>' +
-      //     '<div class="links-container js-links-box">' +
-      //       '<h3>Upcoming events:</h3>' +
-      //       '<ul class="eventLinks">' + renderLinksHtml(venue.events) +
-      //         '</ul>' +
-      //     '</div>' +
-      //   '</div>' +
-      // '</div>'
       `<div class="result-container col-6 js-resultcard">
         <div class="subcontainer">
           <div class="img-container">
@@ -171,9 +162,11 @@ function watchForStart(landingElement, startButton, startBox) {
 function watchForSubmit(formElement, zipInputElement, radiusInputElement, submitButton, resultsElement) {
   submitButton.click(function(e) {
     e.preventDefault();
-    state.apiQuery.data.postalcode = $(zipInputElement).val();
-    state.apiQuery.data.radius = $(radiusInputElement).val();
-    getData(state, saveResults);
+    if (validateZip(zipInputElement)) {
+      state.apiQuery.data.postalcode = $(zipInputElement).val();
+      state.apiQuery.data.radius = $(radiusInputElement).val();
+      getData(state, saveResults);
+    };
   });
 };
 
