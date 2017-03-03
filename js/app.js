@@ -139,7 +139,7 @@ function renderResultsBox(state) {
       return resultshtml;
   });
   $("#js-resultbox").append(content);
-  $("#js-resultbox").fadeIn("fast");
+  $("#js-resultbox").fadeIn("slow");
 };
 
 // Event listeners
