@@ -105,7 +105,7 @@ function renderLinksHtml(venueObject) {
   var content = [];
   var html = "";
   for (i=0; i<3 && i<venueObject.length; i++) {
-    content.push("<li><a target='_blank' href='" + venueObject[i].eventurl + "'>" + venueObject[i].eventdate + "  " + venueObject[i].eventname + "</a></li>");
+    content.push(`<li><a target="_blank" href=" ${venueObject[i].eventurl}">${venueObject[i].eventdate}  ... ${venueObject[i].eventname}</a></li>`);
   };
   for (j=0; j<content.length; j++) {
     html += content[j];
