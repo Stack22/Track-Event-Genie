@@ -158,6 +158,10 @@ li {
   display: none;
 }
 
+.landing {
+  margin-bottom: 100px;
+}
+
 .startbox, .landing {
   width: 90%;
   max-width: 652px;
@@ -165,6 +169,7 @@ li {
   margin-left: auto;
   margin-right: auto;
   margin-top: 25px;
+  marg
   height: auto;
   border-radius: 20px;
   box-shadow: 0 1px 20px #222;

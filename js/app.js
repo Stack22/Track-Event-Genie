@@ -139,16 +139,15 @@ function renderResultsBox(state) {
       return resultshtml;
   });
   $("#js-resultbox").append(content);
-  $("#js-resultbox").removeClass("hidden");
+  $("#js-resultbox").fadeIn("fast");
 };
 
 // Event listeners
 function watchForStart(landingElement, startButton, startBox) {
   startButton.click(function(e) {
-    console.log("I clicked start!");
     e.preventDefault();
     landingElement.addClass("hidden");
-    startBox.removeClass("hidden");
+    $(startBox).fadeIn("slow");
   });
 };
 
