@@ -1,4 +1,4 @@
-# track_event_finder
+# Track Event Genie
 
 Thinkful Unit 1 Frontend capstone project - HTML, CSS, JavaScript, jQuery, API integration
 
@@ -33,6 +33,11 @@ After making some JavaScript changes, I was able to make a little progress. My e
 I enlisted the help of another Thinkful mentor, Jefferson Heard. He agreed to meet me and take a look at what I've got. After only a few minutes, and some magic keystrokes from the command line, he was relatively certain that the problem lay not in my code, but on the server where I was calling. The OPTIONS call was throwing the 404 message. It wasn't returning the correct CORS headers.
 
 We emailed the programmer, telling him our theory. A few hours later, I get a response asking to see the full header request information, which I was able to get to him quickly. A short while later, another email response letting me know that he would be updating the server code with permissions to return the correct CORS headers!
+
+Additionally, I learned many things regarding building even a very basic web app:
+* Not all API's are created equal, nor are they always correct (see above)
+* Getting the data from the API, then manipulating it, isn't always intuitive. Learning how and when my code results showed up in the processes of the app proved interesting to say the least.
+* Simpler is usually better (but not always)
 
 #Development Roadmap
 This is v1.0 of the app, future feature additions and enhancements are planned to include:
