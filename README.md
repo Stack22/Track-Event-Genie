@@ -9,11 +9,11 @@ As an automotive track day enthusiast, one daunting task is to plan ahead for ev
 Navigating thru the listings can often times be difficult due to the sheer number of events available. This web app presents those events, filtered by the user, in an easy-to-digest format. The resulting data provides listings grouped by venue, and shows direct links to the events' registration on MotorsportReg.com
 
 #Initial UX
-In developing this app, I wanted to create a simple, but interesting user experience. I used fonts that were easy to read, but fonts seen everyday. I wanted multiple views for the app, but not a confusing set of menus and separate pages. The pdf below is my initial work on views and view requirements.
-https://github.com/Stack22/track_event_finder/blob/master/Documentation/worksheets.pdf
+In developing this app, I wanted to create a simple, but interesting user experience. I used fonts that were easy to read, but not seen everyday. I wanted multiple views for the app, but not a confusing set of menus and separate pages. The pdf below is my initial work on views and view requirements.
+https://github.com/Stack22/Track-Event-Genie/blob/master/Documentation/worksheets.pdf
 
 #Working Prototype
-https://stack22.github.io/track_event_finder/
+https://stack22.github.io/Track-Event-Genie/
 
 #Functionality
 * Allow user to enter a zip code for their location (or desired search start point)
@@ -46,8 +46,8 @@ This is v1.0 of the app, future feature additions and enhancements are planned t
   - event type options
   - allow city/state to be entered instead of zip code
   - allow for other postal codes to be used (e.g. Canada)
-  - have results sorted optionally by location (e.g. near to far)
+  - have results sorted optionally by location (e.g. venues near to far)
   - Option to show a complete list of scheduled events (if more than three)
 * Detail view of each venue
-* Semi-randomized results images based on venue
+* Semi-randomized results images based on venue or event type
 * Pop-up "quick view" on hover over event link
